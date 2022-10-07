@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="question.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="quiz_header">
+            <div id="score">
+                <p>Score : </p>
+                <p id="sval"> 0</p>
+            </div>
+            <div class="question_count">
+                <p id="current"></p>
+                <span>/</span>
+                <p id="outof"></p>
+            </div>
+        </div>
+
+        <div class="quiz-cont">
+            <div class="qsec">
+                <h4 id="qes"></h4>
+            </div>
+            <div class="asec" id="opt-sec">
+                <p class="option" id="ans1"></p>
+                <p class="option" id="ans2"></p>
+                <p class="option " id="ans3"></p>
+                <p class="option" id="ans4"></p>
+            </div>
+        </div>
+
+    </div>
+    <!-- <input type="button" value="Next" id="changeBtn"> -->
+</body>
+<script>
+    console.log(question)
+    let docq = document.getElementById('qes')
+    let opt1 = document.getElementById('ans1')
+    let opt2 = document.getElementById('ans2')
+    let opt3 = document.getElementById('ans3')
+    let opt4 = document.getElementById('ans4')
+    let score = document.getElementById('sval')
+    let cngBtn = document.getElementById('changeBtn');
+    let options = document.getElementsByClassName('option')
+    let optionssection = document.getElementById('opt-sec')
+    let qs_count_total = document.getElementById('outof')
+    let qs_count_current = document.getElementById('current')
+    let scoreVal = 0;
+    let value = 0;
+    let questionCount = 0;
+    qs_count_total.innerHTML = `${question.length}`
+    qs_count_current.innerHTML = `${questionCount + 1}`
+    function nextQs() {
+
+        if (questionCount == 10) {
+            console.log('Quiz end')
+            docq.innerHTML = `Your Score is  ${scoreVal}`
+            optionssection.style = "display:none"
+            value = 0;
+        }
+        else {
+            qs_count_current.innerHTML = `${questionCount + 1}`
+            Array.from(options).forEach((elm) => {
+                elm.classList.remove("right")
+                elm.classList.remove("wrong")
+            })
+
+            console.log(question.length)
+            docq.innerHTML = `${question[value].qs}`
+            opt1.innerHTML = `${question[value].o1}`
+            opt2.innerHTML = `${question[value].o2}`
+            opt3.innerHTML = `${question[value].o3}`
+            opt4.innerHTML = `${question[value].o4}`
+            rtanswer = question[value].ans
+            if (value < 10) {
+                value = value + 1;
+            }
+            else {
+                value = 0;
+            }
+            // console.log(value)
+        }
+        questionCount++;
+    }
+    nextQs();
+    Array.from(options).forEach((elm) => {
+        elm.addEventListener('click', () => {
+            var currAns = elm.innerHTML;
+            let rightAns = rtanswer;
+            console.log("given = " + rightAns)
+            console.log("your = " + currAns)
+            if (currAns == rightAns) {
+                console.log("RIGHT")
+                elm.classList.add("right")
+                scoreVal = scoreVal + 1;
+            }
+            else {
+                elm.classList.add("wrong")
+                console.log("WRONG")
+                if (scoreVal != 0) {
+                    scoreVal = scoreVal - 1;
+                }
+            }
+            setTimeout(() => {
+                score.innerHTML = `${scoreVal}`;
+                nextQs();
+            }, 1000);
+
+        })
+    })
+    // cngBtn.addEventListener('click',nextQs)
+
+</script>
+
+</html>
