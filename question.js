@@ -72,6 +72,14 @@ let question = [
         ans: "none"
     },
     {
+        qs :" What is the percentage of Literacy in India?",
+        o1 : "74.4%",
+        o2 : "72.4%",
+        o3 : "71.4%",
+        o4 : "70.4%",
+        ans: "none"
+    },
+    {
         qs :"What is India's official name?",
         o1 : "Bharat/Republic of India",
         o2 : "Bharat/India",
