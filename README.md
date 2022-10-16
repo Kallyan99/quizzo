@@ -1,4 +1,3 @@
 #Installation
 # quizzo
-# projects
 
