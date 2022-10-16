@@ -77,6 +77,14 @@ let question = [
         o2 : "Bharat/India",
         o3 : "Hind/India",
         o4 : "Hind/Republic of India",
-        ans: "Four"
+        ans: "Bharat/India"
     },
+    {
+        qs :"Full from of CPU",
+        o1 : "Central Processing Unit",
+        o2 : "Core Power Unit",
+        o3 : "Core Processing Unit",
+        o4 : "Central Power Unit",
+        ans: "Central Processing Unit"
+    }
 ]
