@@ -1,4 +1,4 @@
 #Installation
-# quizzo
+# quizzo_application
 #Application 
 # hacktober
